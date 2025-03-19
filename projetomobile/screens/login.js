@@ -1,5 +1,5 @@
-import {Text, View, Image, StyleSheet} from 'react-native'
-import { Button, TextInput } from 'react-native-web';
+import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native'
+import { TextInput } from 'react-native-web';
 
 export default function Login(){ 
     return(
@@ -8,12 +8,14 @@ export default function Login(){
 
             <View style={{flex:1}}>
                 <TextInput style={styles.input} placeholder="Usuário"></TextInput>
-                <TextInput style={styles.input} placeholder="Senha"></TextInput>
+                <TextInput style={styles.input} placeholder="Senha" secureTextEntry={true}></TextInput>
             </View>
 
-            <View style={{flex:0.5}}>
-                <Button title="Entrar" color='rgb(138, 83, 214)' style={{width: 30, height: 60}}
-                ></Button>
+            <View style={{flex:0.5, alignItems: 'center'}}>
+                <TouchableOpacity
+                    style={styles.botao}>
+                        <Text style={{ color: 'white', fontSize: 26 }}>Entrar</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )
@@ -44,4 +46,12 @@ const styles = StyleSheet.create({
         textShadowColor: 'rgba(136, 65, 202, 0.75)',
         textShadowOffset: {width: 2, height: 3},
     },
+    botao: {
+        width: 200, 
+        height: 60, 
+        backgroundColor: 'rgb(138, 83, 214)', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        borderRadius: 10
+    }
   });
