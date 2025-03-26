@@ -2,23 +2,26 @@ import 'react-native-gesture-handler';
 import Home from './screens/home';
 import Login from './screens/login';
 import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 export default function App() { 
-  const Drawer = createDrawerNavigator();
-  /* o de cima (login) é o primeiro q aparece quando abre */
+  const Bottom = createBottomTabNavigator();
+  /* o de cima (login) é o primeiro q aparece quando abre -- pra nao acontecer isso: initialRouteName */
   return(
     <NavigationContainer>
-      <Drawer.Navigator screenOptions={{ headerShadowVisible: false, 
+      <Bottom.Navigator initialRouteName='Login'
+        screenOptions={{ headerShadowVisible: false, 
         headerTitleStyle: {fontWeight: 'bold', fontSize: 20}, 
-        drawerStyle: {backgroundColor: 'rgb(173, 131, 231)'},  drawerActiveTintColor: '#fff', drawerLabelStyle: {fontSize: 20}
-        }}>
-        <Drawer.Screen name='Login' component={Login} options={{headerStyle: {backgroundColor: 'rgb(173, 131, 231)'}, 
-        }}/>
+        tabBarActiveTintColor: '#fff'}}> 
 
-        <Drawer.Screen name='Home' component={Home} options={{headerStyle: {backgroundColor: 'rgb(225, 200, 232)'},
-        }}/>
-      </Drawer.Navigator>
+        <Bottom.Screen name='Login' component={Login} options={{headerStyle: {backgroundColor: 'rgb(173, 131, 231)'}, 
+        tabBarStyle: { backgroundColor: 'rgb(173, 131, 231)',}, 
+        tabBarInactiveTintColor: 'rgb(138, 83, 214)',}}/>
+
+        <Bottom.Screen name='Home' component={Home} options={{headerStyle: {backgroundColor: 'rgb(225, 200, 232)'},
+         tabBarStyle: { backgroundColor: 'rgb(214, 173, 233)',},
+          tabBarInactiveTintColor: 'rgb(138, 83, 214)'}}/>
+      </Bottom.Navigator>
     </NavigationContainer>
   )
 }
