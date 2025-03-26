@@ -1,5 +1,6 @@
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native'
 import { TextInput } from 'react-native-web';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 export default function Login({navigation}){ 
     return(
