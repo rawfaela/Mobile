@@ -4,9 +4,10 @@ import Login from './screens/login';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-export default function App() { 
+export default function Drawer() { 
   const Drawer = createDrawerNavigator();
   /* o de cima (login) é o primeiro q aparece quando abre */
+  //! ver como bota icon
   return(
     <NavigationContainer>
       <Drawer.Navigator screenOptions={{ headerShadowVisible: false, 
