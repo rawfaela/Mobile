@@ -1,7 +1,12 @@
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native'
 import { TextInput } from 'react-native-web';
+import Home from './home'
+import {createStaticNavigation, useNavigation,} from '@react-navigation/native';
+
 
 export default function Login(){ 
+    const navigation = useNavigation();
+    
     return(
         <View style={styles.container}>
             <View style={{flex:1}}><Text style={styles.titulo}> Perfumes by Rafa </Text></View>
@@ -13,7 +18,7 @@ export default function Login(){
 
             <View style={{flex:0.5, alignItems: 'center'}}>
                 <TouchableOpacity
-                    style={styles.botao}>
+                    style={styles.botao} onPress={() => navigation.navigate('Home')}>
                         <Text style={{ color: 'white', fontSize: 26 }}>Entrar</Text>
                 </TouchableOpacity>
             </View>
