@@ -8,7 +8,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 export default function App() { 
   const Bottom = createBottomTabNavigator();
   /* o de cima (login) é o primeiro q aparece quando abre -- pra nao acontecer isso: initialRouteName */
-  //! ver como faz icone focused
+  //! ver como faz icone focused e mais de um navigator
   return(
     <NavigationContainer>
       <Bottom.Navigator initialRouteName='Login'
