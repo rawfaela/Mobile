@@ -1,12 +1,7 @@
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native'
 import { TextInput } from 'react-native-web';
-import Home from './home'
-import {createStaticNavigation, useNavigation,} from '@react-navigation/native';
 
-
-export default function Login(){ 
-    const navigation = useNavigation();
-    
+export default function Login({navigation}){ 
     return(
         <View style={styles.container}>
             <View style={{flex:1}}><Text style={styles.titulo}> Perfumes by Rafa </Text></View>
