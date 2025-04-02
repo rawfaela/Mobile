@@ -1,6 +1,5 @@
-import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native'
+import {Text, View, StyleSheet, TouchableOpacity} from 'react-native'
 import { TextInput } from 'react-native-web';
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 export default function Login({navigation}){ 
     return(
@@ -14,13 +13,13 @@ export default function Login({navigation}){
 
             <View style={{flex:0.5, alignItems: 'center'}}>
                 <TouchableOpacity
-                    style={styles.botao} onPress={() => navigation.navigate('Home')}>
+                    style={styles.botao} onPress={() => navigation.navigate('HomeTabs')}>
                         <Text style={{ color: 'white', fontSize: 26 }}>Entrar</Text>
                 </TouchableOpacity>
             </View>
         </View>
     )
-}
+};
 
 const styles = StyleSheet.create({
     container: {

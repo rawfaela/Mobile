@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler';
 import Home from './screens/home';
 import Login from './screens/login';
+import Feed from '../screens/feed';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
@@ -19,7 +20,9 @@ export default function Drawer() {
 
         <Drawer.Screen name='Home' component={Home} options={{headerStyle: {backgroundColor: 'rgb(225, 200, 232)'},
         }}/>
+        
+        <Drawer.Screen name='Feed' component={Feed} options={{headerStyle: {backgroundColor: 'rgb(208, 157, 231)'}}}/>
       </Drawer.Navigator>
     </NavigationContainer>
   )
-}
+};
