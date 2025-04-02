@@ -1,4 +1,5 @@
 import {Text, View, Image, StyleSheet, TouchableOpacity, ScrollView} from 'react-native'
+import { TextInput } from 'react-native-web';
 import { useState } from 'react';
 
 export default function Counter(){ 
@@ -8,19 +9,26 @@ export default function Counter(){
         setCont(cont+1)
     }
     function Menos(){
-        setCont(cont-1)
+        if (cont>0){
+            setCont(cont-1)   
+        }
     }
     return(
         <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
             <Text style={styles.titulo}>Contador: {cont}</Text>
 
-            <View style={{flexDirection: 'row'}}>
+            <View style={{flexDirection: 'row', marginBottom: 20}}>
                 <TouchableOpacity style={styles.botao}>
                     <Text style={styles.texto} onPress={Mais}>+</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.botao} onPress={Menos}>
                     <Text style={styles.texto}>-</Text>
                 </TouchableOpacity>
+            </View>
+
+            <View style={{alignItems: 'center'}}>
+                <TextInput style={styles.input} placeholder="Nome"/>
+                <TextInput style={styles.input} placeholder="Email"/>
             </View>
 
         </ScrollView>
@@ -31,8 +39,8 @@ export default function Counter(){
 
 const styles = StyleSheet.create({
     container: {
-    flex: 1,
-    backgroundColor: 'rgb(214, 173, 233)',
+        flex: 1,
+        backgroundColor: 'rgb(214, 173, 233)',
     },
     titulo: {
         marginTop: 30,
@@ -58,4 +66,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         margin: 'auto',
     },
+    input: {
+        fontSize: 23,
+        width: '60%',
+        height: 50,
+        margin: 8,
+        color: 'white',
+        borderColor: 'rgb(117, 64, 192)',
+        borderWidth: 4,
+        padding: 10,
+        borderRadius: 7,
+        backgroundColor:' rgb(182, 143, 236)',
+    }
 });

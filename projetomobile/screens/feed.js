@@ -21,8 +21,8 @@ export default function Feed(){
 
 const styles = StyleSheet.create({
     container: {
-    flex: 1,
-    backgroundColor: 'rgb(214, 173, 233)',
+        flex: 1,
+        backgroundColor: 'rgb(214, 173, 233)',
     },
     titulo: {
         marginTop: 30,
