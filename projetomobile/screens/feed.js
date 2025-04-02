@@ -1,5 +1,4 @@
 import {Text, View, Image, StyleSheet, TouchableOpacity, ScrollView} from 'react-native'
-import { TextInput } from 'react-native-web';
 
 export default function Feed(){ 
     return(

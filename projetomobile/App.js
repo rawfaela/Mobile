@@ -1,11 +1,15 @@
 import 'react-native-gesture-handler';
-import Home from './screens/home';
-import Login from './screens/login';
-import Feed from './screens/feed';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+
+import Home from './screens/home';
+import Login from './screens/login';
+import Feed from './screens/feed';
+import Counter from './screens/counter';
+
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+
 
 function BottomTabs(){
   const Bottom = createBottomTabNavigator();
@@ -20,12 +24,17 @@ function BottomTabs(){
       <Bottom.Screen name='Home' component={Home} options={{headerStyle: {backgroundColor: 'rgb(225, 200, 232)'},
         tabBarStyle: { backgroundColor: 'rgb(214, 173, 233)',},
         tabBarInactiveTintColor: 'rgb(138, 83, 214)',
-        tabBarIcon: ({focused}) => (<MaterialIcons name="home" size={24} color={focused ? "white" : "black"} /> )}}/>
+        tabBarIcon: ({focused}) => (<MaterialIcons name="home" size={30} color={focused ? "white" : "black"} /> )}}/>
         
       <Bottom.Screen name='Feed' component={Feed} options={{headerStyle: {backgroundColor: 'rgb(208, 157, 231)'},
         tabBarStyle: { backgroundColor: 'rgb(208, 157, 231)',},
         tabBarInactiveTintColor: 'rgb(138, 83, 214)',
-        tabBarIcon: ({focused}) => (<MaterialIcons name="feed" size={24} color={focused ? "white" : "black"} /> )}}/>
+        tabBarIcon: ({focused}) => (<MaterialIcons name="feed" size={30} color={focused ? "white" : "black"} /> )}}/>
+
+      <Bottom.Screen name='Counter' component={Counter} options={{headerStyle: {backgroundColor: 'rgb(208, 157, 231)'},
+        tabBarStyle: { backgroundColor: 'rgb(208, 157, 231)',},
+        tabBarInactiveTintColor: 'rgb(138, 83, 214)',
+        tabBarIcon: ({focused}) => (<MaterialIcons name="calculate" size={30} color={focused ? "white" : "black"} /> )}}/>
 
     </Bottom.Navigator>
   )
