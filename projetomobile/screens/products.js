@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { View, Text, StyleSheet, FlatList, Image } from "react-native";
+import Cards from "../components/card";
 
 export default function Products(){
     const [produtos, setProdutos] = useState([
@@ -17,11 +18,7 @@ export default function Products(){
 
             {/* array com flatlist */}
             <FlatList data={produtos} renderItem={({item}) => (    
-                <View style={styles.prod}>       
-                    <Text style={styles.txtprod}>{item.nome} </Text>
-                    <Text style={styles.txtprod}>R${item.preco}</Text>
-                    <Image source={{uri: item.img }}style={styles.imgprods}/>
-                </View>
+                <Cards nome={item.nome} preco={item.preco} img={item.img}/>
             )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false}/>
          </View>
              
@@ -32,9 +29,7 @@ export default function Products(){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'rgb(214, 173, 233)',
-        justifyContent: 'space-around',
-       
+        backgroundColor: 'rgb(214, 173, 233)',       
     },
     titulo: {
         marginTop: 30,
@@ -45,27 +40,5 @@ const styles = StyleSheet.create({
         color: 'rgb(46, 6, 83)',
         textShadowColor: 'rgba(136, 65, 202, 0.49)',
         textShadowOffset: {width: 2, height: 2},
-    },
-
-    prod:{
-        alignItems: 'center',
-        backgroundColor: 'rgb(208, 157, 231)',
-        width: '55%',
-        padding: 20,
-        borderRadius: 25,
-        alignSelf: 'center',
-        marginBottom: 20,
-    },
-    txtprod:{
-        textAlign: 'center',
-        fontSize: 25,
-        fontWeight: '600',
-    },
-    imgprods: {
-        width: 150,
-        height: 150,
-        borderRadius: 20,
-        borderWidth: 3,
-        borderColor: 'rgb(46, 6, 83)',
     },
 })

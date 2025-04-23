@@ -30,7 +30,7 @@ function BottomTabs(){
 
       <Bottom.Screen name='Products' component={Products} options={{headerStyle: {backgroundColor: 'rgb(208, 157, 231)'},
         tabBarStyle: { backgroundColor: 'rgb(208, 157, 231)',},
-        tabBarIcon: ({focused}) => (<MaterialIcons name="shopping-cart" size={30} color={focused ? "white" : "black"} /> )}}/>
+        tabBarIcon: ({focused}) => (<MaterialIcons name="storefront" size={30} color={focused ? "white" : "black"} /> )}}/>
 
       <Bottom.Screen name='Counter' component={Counter} options={{headerStyle: {backgroundColor: 'rgb(208, 157, 231)'},
         tabBarStyle: { backgroundColor: 'rgb(208, 157, 231)',},
