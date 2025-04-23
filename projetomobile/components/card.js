@@ -4,9 +4,11 @@ import { View, Text, StyleSheet, FlatList, Image } from "react-native";
 export default function Cards({nome, preco, img}){
     return(
         <View style={styles.prod}>       
-            <Text style={styles.txtprod}>{nome} </Text>
-            <Text style={styles.txtprod}>R${preco}</Text>
             <Image source={{uri: img }}style={styles.imgprods}/>
+            <View>
+                <Text style={styles.txtprod}>{nome} </Text>
+                <Text style={styles.txtprod}>R${preco}</Text>
+            </View>
         </View>
     )
 }
@@ -15,11 +17,13 @@ const styles = StyleSheet.create({
     prod:{
         alignItems: 'center',
         backgroundColor: 'rgb(208, 157, 231)',
-        width: '55%',
+        width: '90%',
         padding: 20,
         borderRadius: 25,
         alignSelf: 'center',
         marginBottom: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-around'
     },
     txtprod:{
         textAlign: 'center',
