@@ -11,22 +11,21 @@ export default function Products(){
     return(
         <View style={styles.container}>
             <Text style={styles.titulo}>Produtos</Text>
-
             {/* array com map
             {produtos.map((item) => (
                 <Text style={styles.prods}>{item.nome} - R${item.preco}</Text>))} */}
 
             {/* array com flatlist */}
-            <View style={styles.produtos}>
-                <FlatList data={produtos} renderItem={({item}) => (
-                    <View style={styles.prod}>
-                        <Text style={styles.txtprod}>{item.nome} </Text>
-                        <Text style={styles.txtprod}>R${item.preco}</Text>
-                        <Image source={{uri: item.img }}style={styles.imgprods}/>
-                    </View>
-                )} keyExtractor={item => item.id}/>
-            </View>
-        </View>
+            <FlatList data={produtos} renderItem={({item}) => (    
+                <View style={styles.prod}>       
+                    <Text style={styles.txtprod}>{item.nome} </Text>
+                    <Text style={styles.txtprod}>R${item.preco}</Text>
+                    <Image source={{uri: item.img }}style={styles.imgprods}/>
+                </View>
+            )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false}/>
+         </View>
+             
+          
     )
 }
 
@@ -34,6 +33,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'rgb(214, 173, 233)',
+        justifyContent: 'space-around',
+       
     },
     titulo: {
         marginTop: 30,
@@ -45,17 +46,15 @@ const styles = StyleSheet.create({
         textShadowColor: 'rgba(136, 65, 202, 0.49)',
         textShadowOffset: {width: 2, height: 2},
     },
-    produtos: {
-        justifyContent: 'space-around', /* NAO QUER PEGAR */
-    },
+
     prod:{
         alignItems: 'center',
         backgroundColor: 'rgb(208, 157, 231)',
-        height: '100%',
         width: '55%',
-        padding: 10,
+        padding: 20,
         borderRadius: 25,
         alignSelf: 'center',
+        marginBottom: 20,
     },
     txtprod:{
         textAlign: 'center',
