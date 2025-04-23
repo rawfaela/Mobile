@@ -13,7 +13,7 @@ export default function Home(){
                     <Image source={{uri : 'https://http2.mlstatic.com/D_Q_NP_892409-MLU75559572244_042024-O.webp'}} style={styles.imagem}/>
                 </View>
 
-                <View style={{flex:1}}><Text style={styles.texto2}> Encontre os melhores aromas do mundo <br/> neste catálogo! </Text></View>
+                <View style={{flex:1}}><Text style={styles.texto2}> Encontre os melhores aromas do mundo {'/n'} neste catálogo! </Text></View>
                 
                 <View style={styles.imagens}>
                     <Image source={{uri : 'https://a-static.mlcdn.com.br/1500x1500/perfume-masculino-eudora-h-deo-colonia-flow-100ml/cfrcosmeticoseireli/53452/d9a7483293030a793695676f3363f458.jpeg'}} style={styles.imagem}/>
