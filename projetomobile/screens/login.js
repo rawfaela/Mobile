@@ -1,5 +1,4 @@
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native'
-import { TextInput } from 'react-native-web';
+import {Text, View, StyleSheet, TouchableOpacity, TextInput} from 'react-native'
 
 export default function Login({navigation}){ 
     return(

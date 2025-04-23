@@ -1,9 +1,10 @@
-import {Text, View, Image, StyleSheet, TouchableOpacity, ScrollView} from 'react-native'
-import { TextInput } from 'react-native-web';
+import {Text, View, Image, StyleSheet, TouchableOpacity, ScrollView, TextInput} from 'react-native'
 import { useState } from 'react';
 
 export default function Counter(){ 
     const [cont, setCont] = useState(0) //* estado inicial
+    const [nome, setNome] = useState("")
+    const [email, setEmail] = useState("")
 
     function Mais(){
         setCont(cont+1)
@@ -27,10 +28,10 @@ export default function Counter(){
             </View>
 
             <View style={{alignItems: 'center'}}>
-                <TextInput style={styles.input} placeholder="Nome"/>
-                <TextInput style={styles.input} placeholder="Email"/>
+                <TextInput style={styles.input} placeholder="Nome" value={nome} onChangeText={setNome}/>
+                <TextInput style={styles.input} placeholder="Email" value={email} onChangeText={setEmail}/>
             </View>
-
+            <Text style={styles.texto}>Oi {nome}, seu email é {email}</Text>
         </ScrollView>
     )
 };

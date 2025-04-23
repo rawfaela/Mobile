@@ -1,5 +1,5 @@
 import {Text, View, Image, StyleSheet} from 'react-native'
-import { ImageBackground } from 'react-native-web';
+import { ImageBackground } from 'react-native';
 import Fundo from '../assets/fundo.jpg'
 
 export default function Home(){ 
