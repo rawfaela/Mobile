@@ -8,6 +8,7 @@ import Login from './screens/login';
 import Feed from './screens/feed';
 import Counter from './screens/counter';
 import Products from './screens/products';
+import Signup from './screens/signup';
 
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
@@ -49,6 +50,9 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShadowVisible: false, headerStyle: {margin:0}, headerTitleStyle: {fontWeight: 'bold', fontSize: 20} }}> 
         <Stack.Screen name='Login' component={Login} options={{headerStyle: {backgroundColor: 'rgb(173, 131, 231)'}}}/>
+
+        <Stack.Screen name='Signup' component={Signup} options={{headerStyle: {backgroundColor: 'rgb(173, 131, 231)'}}}/>
+        
         <Stack.Screen options={{headerShown: false}} name='HomeTabs' component={BottomTabs}/>
       </Stack.Navigator>
     </NavigationContainer>
