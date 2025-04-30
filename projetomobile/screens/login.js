@@ -1,22 +1,36 @@
 import { useState } from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, TextInput} from 'react-native'
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../controller';
+import Home from './home';
 
 export default function Login({navigation}){
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+
+    const verifyUser = () => {
+        signInWithEmailAndPassword(auth, email, senha)
+        .then(userCredential=> {
+            console.log('logado', userCredential.user.email);
+            navigation.navigate('HomeTabs');
+          })
+          .catch((error) => {
+            console.log('erro ao logar', error.message)
+          });
+    }
 
     return(
         <View style={styles.container}>
             <View style={{flex:1}}><Text style={styles.titulo}> Perfumes by Rafa </Text></View>
 
             <View style={{flex:1}}>
-                <TextInput style={styles.input} placeholder="Email"></TextInput>
-                <TextInput style={styles.input} placeholder="Senha" secureTextEntry={true}></TextInput>
+                <TextInput style={styles.input} placeholder="Email" value={email} onChangeText={setEmail}></TextInput>
+                <TextInput style={styles.input} placeholder="Senha"  value={senha} onChangeText={setSenha} secureTextEntry={true}></TextInput>
             </View>
 
             <View style={{flex:0.5, alignItems: 'center', justifyContent: 'space-around'}}>
                 <TouchableOpacity
-                    style={styles.botao} >
+                    style={styles.botao} onPress={verifyUser}>
                         <Text style={{ color: 'white', fontSize: 26 }}>Entrar</Text>
                 </TouchableOpacity>
                 <TouchableOpacity

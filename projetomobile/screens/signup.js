@@ -14,7 +14,7 @@ export default function Signup({navigation}){
             navigation.navigate('Login');
         })
         .catch((error) => {
-            console.log('erro', error.message)
+            console.log('erro ao cadastrar', error.message)
         });
     };
 
