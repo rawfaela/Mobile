@@ -1,6 +1,6 @@
 import {Text, View, Image, StyleSheet, TouchableOpacity, ScrollView} from 'react-native'
 
-export default function Feed(){ 
+export default function Feed({navigation}){ 
     return(
         <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
             <Text style={styles.titulo}>Feed</Text>
@@ -11,7 +11,7 @@ export default function Feed(){
             <Text style={styles.texto}>Novo lançamento!🌟Sinta a magia de uma nova fragrância que envolve e encanta! #Lançamento #PerfumeNovo #FragrânciaExclusiva</Text>
 
             <View style={{alignItems: 'center', marginBottom: 20,}}>
-                <TouchableOpacity style={styles.botao}>
+                <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Home')}>
                     <Text style={styles.saibamais}>Saiba mais</Text>
                 </TouchableOpacity>
             </View>
