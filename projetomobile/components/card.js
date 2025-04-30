@@ -4,8 +4,8 @@ import { View, Text, StyleSheet, FlatList, Image } from "react-native";
 export default function Cards({nome, preco, img}){
     return(
         <View style={styles.prod}>       
-            <Image source={{uri: img }}style={styles.imgprods}/>
-            <View>
+            <Image source={{uri: img}}style={styles.imgprods}/>
+            <View style={{flex: 1, marginLeft:5 }}>
                 <Text style={styles.txtprod}>{nome} </Text>
                 <Text style={styles.txtprod}>R${preco}</Text>
             </View>
