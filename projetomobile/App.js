@@ -9,6 +9,7 @@ import Feed from './screens/feed';
 import Counter from './screens/counter';
 import Products from './screens/products';
 import Signup from './screens/signup';
+import AddProducts from './screens/addproducts';
 
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
@@ -37,7 +38,9 @@ function BottomTabs(){
         tabBarStyle: { backgroundColor: 'rgb(208, 157, 231)',},
         tabBarIcon: ({focused}) => (<MaterialIcons name="calculate" size={30} color={focused ? "white" : "black"} /> )}}/>
 
-      
+      <Bottom.Screen name='AddProducts' component={AddProducts} options={{headerStyle: {backgroundColor: 'rgb(208, 157, 231)'},
+        tabBarStyle: { backgroundColor: 'rgb(208, 157, 231)',},
+        tabBarIcon: ({focused}) => (<MaterialIcons name="calculate" size={30} color={focused ? "white" : "black"} /> )}}/>
 
     </Bottom.Navigator>
   )
