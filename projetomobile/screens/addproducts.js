@@ -11,12 +11,10 @@ export default function AddProducts(){
     const addProduct = async () => {
         try {
             await addDoc(collection(db, "produtos"), {
-                nome: nome,
-                valor: valor,
-                imagem: imagem,
-                criadoEm: new Date()
+                nome,
+                valor: parseFloat(valor),
+                imagem,
             });
-            alert("Produto adicionado com sucesso!");
             setNome("");
             setValor("");
             setImagem("");
