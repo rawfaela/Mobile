@@ -40,7 +40,7 @@ function BottomTabs(){
 
       <Bottom.Screen name='AddProducts' component={AddProducts} options={{headerStyle: {backgroundColor: 'rgb(208, 157, 231)'},
         tabBarStyle: { backgroundColor: 'rgb(208, 157, 231)',},
-        tabBarIcon: ({focused}) => (<MaterialIcons name="calculate" size={30} color={focused ? "white" : "black"} /> )}}/>
+        tabBarIcon: ({focused}) => (<MaterialIcons name="add-box" size={30} color={focused ? "white" : "black"} /> )}}/>
 
     </Bottom.Navigator>
   )
