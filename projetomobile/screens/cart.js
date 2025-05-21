@@ -5,7 +5,7 @@ import { db } from "../controller";
 import { collection, getDocs } from "firebase/firestore";
 import { useCart } from "../components/cartprovider";
 
-export default function Products({navigation}){
+export default function Cart({navigation}){
     const [produtos, setProdutos] = useState([])
 
     useEffect(() => {
@@ -25,12 +25,8 @@ export default function Products({navigation}){
     }, []);
     return(
         <View style={styles.container}>
-            <Text style={styles.titulo}>Produtos</Text>
-            {/* array com map
-            {produtos.map((item) => (
-                <Text style={styles.prods}>{item.nome} - R${item.preco}</Text>))} */}
+            <Text style={styles.titulo}>Carrinho</Text>
 
-            {/* array com flatlist */}
             <FlatList data={produtos} renderItem={({item}) => (    
                 <Cards nome={item.nome} preco={item.valor} img={item.imagem} comprar={() => {addToCart(item); navigation.navigate('carrinho')}}/>
             )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false}/>

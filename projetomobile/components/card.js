@@ -1,13 +1,16 @@
 import { useState } from "react";
-import { View, Text, StyleSheet, FlatList, Image } from "react-native";
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from "react-native";
 
-export default function Cards({nome, preco, img}){
+export default function Cards({nome, preco, img, comprar}){
     return(
         <View style={styles.prod}>       
             <Image source={{uri: img}}style={styles.imgprods}/>
-            <View style={{flex: 1, marginLeft:5 }}>
+            <View style={{flex: 1, marginLeft:5, alignItems: 'center' }}>
                 <Text style={styles.txtprod}>{nome} </Text>
                 <Text style={styles.txtprod}>R${preco}</Text>
+                <TouchableOpacity onPress={comprar} style={styles.botao}>
+                    <Text style={{textAlign: 'center', fontSize: 20, color: 'white'}}>Adicionar ao carrinho</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )
@@ -37,5 +40,12 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: 'rgb(46, 6, 83)',
     },
-
+    botao: {
+        width: 120, 
+        height: 60, 
+        backgroundColor: 'rgb(46, 6, 83)', 
+        borderRadius: 10,
+        margin: 10,
+        justifyContent: 'center'
+    },
 })

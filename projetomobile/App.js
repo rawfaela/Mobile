@@ -1,7 +1,9 @@
 import 'react-native-gesture-handler';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import { CartProvider } from './components/cartprovider';
 
 import Home from './screens/home';
 import Login from './screens/login';
@@ -10,6 +12,7 @@ import Counter from './screens/counter';
 import Products from './screens/products';
 import Signup from './screens/signup';
 import AddProducts from './screens/addproducts';
+import Cart from './screens/cart';
 
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
@@ -42,6 +45,9 @@ function BottomTabs(){
         tabBarStyle: { backgroundColor: 'rgb(208, 157, 231)',},
         tabBarIcon: ({focused}) => (<MaterialIcons name="add-box" size={30} color={focused ? "white" : "black"} /> )}}/>
 
+      <Bottom.Screen name='Cart' component={Cart} options={{headerStyle: {backgroundColor: 'rgb(208, 157, 231)'},
+        tabBarStyle: { backgroundColor: 'rgb(208, 157, 231)',}, 
+        tabBarIcon: ({ focused }) => (<MaterialIcons name="shopping-cart" size={30} color={focused ? "white" : "black"} />) }}/>
     </Bottom.Navigator>
   )
 }
@@ -50,14 +56,16 @@ export default function App() {
   const Stack = createStackNavigator();
 
   return(
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShadowVisible: false, headerStyle: {margin:0}, headerTitleStyle: {fontWeight: 'bold', fontSize: 20} }}> 
-        <Stack.Screen name='Login' component={Login} options={{headerStyle: {backgroundColor: 'rgb(173, 131, 231)'}}}/>
+    <CartProvider>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShadowVisible: false, headerStyle: {margin:0}, headerTitleStyle: {fontWeight: 'bold', fontSize: 20} }}> 
+{/*           <Stack.Screen name='Login' component={Login} options={{headerStyle: {backgroundColor: 'rgb(173, 131, 231)'}}}/>
 
-        <Stack.Screen name='Signup' component={Signup} options={{headerStyle: {backgroundColor: 'rgb(173, 131, 231)'}}}/>
-        
-        <Stack.Screen options={{headerShown: false}} name='HomeTabs' component={BottomTabs}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+          <Stack.Screen name='Signup' component={Signup} options={{headerStyle: {backgroundColor: 'rgb(173, 131, 231)'}}}/> */}
+          
+          <Stack.Screen options={{headerShown: false}} name='HomeTabs' component={BottomTabs}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </CartProvider>
   )
 };
