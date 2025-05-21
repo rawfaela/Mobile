@@ -1,40 +1,75 @@
-import { use, useEffect, useState } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
-import Cards from "../components/card";
-import { db } from "../controller";
-import { collection, getDocs } from "firebase/firestore";
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from "react-native";
 import { useCart } from "../components/cartprovider";
 
-export default function Cart({navigation}){
-    const [produtos, setProdutos] = useState([])
+export default function Cart() {
+  const { cart, addToCart, decreaseQuantity, clearCart } = useCart();
 
-    useEffect(() => {
-        async function carregarProdutos() {
-            try {
-                const querySnapshot = await getDocs(collection(db, 'produtos'));
-                const array = [];
-                querySnapshot.forEach((doc) => {
-                    array.push({id: doc.id, ...doc.data() });
-                });
-                setProdutos(array);
-            } catch (error){
-                console.log("Erro ao buscar produtos: ", error)
-            }
-        }
-        carregarProdutos();
-    }, []);
-    return(
-        <View style={styles.container}>
-            <Text style={styles.titulo}>Carrinho</Text>
+  const aumentar = (id) => {
+    const produto = cart.find(item => item.id === id);
+    if (produto) {
+      addToCart(produto, 1); // soma 1 na quantidade
+    }
+  };
 
-            <FlatList data={produtos} renderItem={({item}) => (    
-                <Cards nome={item.nome} preco={item.valor} img={item.imagem} comprar={() => {addToCart(item); navigation.navigate('carrinho')}}/>
-            )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false}/>
-         </View>
-             
-          
-    )
+  const diminuir = (id) => {
+    const produto = cart.find(item => item.id === id);
+    if (produto) {
+      decreaseQuantity(id); // diminui 1 e remove se chegar a zero
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.titulo}>Carrinho</Text>
+
+      {cart.length === 0 ? (
+        <Text style={styles.txtprod}>Seu carrinho está vazio.</Text>
+      ) : (
+        <View>
+            <FlatList
+            data={cart}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+                <View style={styles.prod}>
+                <Image source={{ uri: item.imagem }} style={styles.imgprods} />
+                <View style={{ flex: 1.5, margin: 5, alignItems: "center" }}>
+                    <Text style={styles.txtprod}>{item.nome}</Text>
+                    <Text style={styles.txtprod}>R$ {item.valor}</Text>
+                </View>
+                <View
+                    style={{
+                    flex: 1,
+                    margin: 5,
+                    alignItems: "center",
+                    flexDirection: "row",
+                    }}
+                >
+                    <TouchableOpacity
+                    style={styles.botao}
+                    onPress={() => aumentar(item.id)}
+                    >
+                    <Text style={styles.txtbotao}>+</Text>
+                    </TouchableOpacity>
+                    <Text style={styles.txtbotao}>{item.quantidade}</Text>
+                    <TouchableOpacity
+                    style={styles.botao}
+                    onPress={() => diminuir(item.id)}
+                    >
+                    <Text style={styles.txtbotao}>-</Text>
+                    </TouchableOpacity>
+                </View>
+                </View>
+            )}/>
+        <TouchableOpacity style={styles.limpar} onPress={() => clearCart()}>
+            <Text style={styles.txtprod}>Limpar carrinho</Text>
+        </TouchableOpacity>
+      </View>
+      )}
+    </View>
+  );
 }
+
+
 
 const styles = StyleSheet.create({
     container: {
@@ -51,4 +86,47 @@ const styles = StyleSheet.create({
         textShadowColor: 'rgba(136, 65, 202, 0.49)',
         textShadowOffset: {width: 2, height: 2},
     },
+    prod:{
+        alignItems: 'center',
+        backgroundColor: 'rgb(208, 157, 231)',
+        width: '90%',
+        padding: 10,
+        borderRadius: 25,
+        alignSelf: 'center',
+        marginBottom: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-around'
+    },
+    txtprod:{
+        textAlign: 'center',
+        fontSize: 25,
+        fontWeight: '600',
+    },
+    imgprods: {
+        width: 100,
+        height: 100,
+        borderRadius: 20,
+        borderWidth: 3,
+        borderColor: 'rgb(46, 6, 83)',
+    },
+    botao: {
+        width: 30, 
+        height: 30, 
+        backgroundColor: 'rgb(95, 30, 156)', 
+        borderRadius: 5,
+        justifyContent: 'center',
+        margin: 'auto',
+    },
+    txtbotao: {
+        textAlign: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    limpar: {
+        padding: 5,
+        backgroundColor: 'rgb(170, 109, 228)', 
+        borderRadius: 5,
+        justifyContent: 'center',
+        margin: 'auto',
+    }
 })

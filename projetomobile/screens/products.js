@@ -5,8 +5,10 @@ import { db } from "../controller";
 import { collection, getDocs } from "firebase/firestore";
 import { useCart } from "../components/cartprovider";
 
+
 export default function Products({navigation}){
     const [produtos, setProdutos] = useState([])
+    const { addToCart } = useCart();
 
     useEffect(() => {
         async function carregarProdutos() {
@@ -32,7 +34,7 @@ export default function Products({navigation}){
 
             {/* array com flatlist */}
             <FlatList data={produtos} renderItem={({item}) => (    
-                <Cards nome={item.nome} preco={item.valor} img={item.imagem} comprar={() => {addToCart(item); navigation.navigate('carrinho')}}/>
+                <Cards nome={item.nome} preco={item.valor} img={item.imagem} comprar={() => {addToCart(item, 1)}}/>
             )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false}/>
          </View>
              
